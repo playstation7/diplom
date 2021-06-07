@@ -35,6 +35,7 @@
   </div>
 </div>
 <div class="row">
+{%if news %}
 {% for new in news %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
@@ -50,6 +51,7 @@
 {% empty %}
 <h4>Нет новостей</h4>
 {% endfor %}
+{% endif %}
 </div>
 
 
