@@ -126,7 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
@@ -151,8 +151,8 @@ DATABASES = {
 
 # Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# Разрешены все заголовки хостов.
-ALLOWED_HOSTS = ['*']
+
+
 # Конфигурация статических ресурсов
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
