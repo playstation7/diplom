@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         {% load bootstrap3 %}
+        <title>Умный Ритейл</title>
+        {% load static %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <link rel="stylesheet" href="{% static 'diploms/css/diploms.css' %}">
+        <style>
+
+
+
+
+            th{
+                padding:5px;
+                width: 50%;
+                text-align: center;
+
+            }
+
+        </style>
+
+
+
+    </head>
+    <body>
+        <!-- Статистическая навигационная модель -->
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed glyphicon glyphicon-menu-hamburger"
+                            data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar">
+                    </button>
+                    <a class="navbar-brand" style="color:green" href="{% url 'index' %}">Умный Ритейл</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'about' %}" style="color:#ff4040">О компании</a></li>
+                        <li><a href="{% url 'partner' %}" style="color:#ff4040">Сотрудничество</a></li>
+                        <li><a href="{% url 'connect' %}" style="color:#ff4040">Связаться</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        {% if user.is_authenticated%}
+                        <li><div class="dropdown">
+                              <button class="dropbtn">Hello, {{user.username}}</button>
+                              <div class="dropdown-content">
+                                <a href="{% url 'support'%}">Поддержка</a>
+                                <a href="{% url 'logout'%}">Выход</a>
+
+                              </div>
+                            </div>
+                        </li>
+
+                        {% else %}
+                        <li><a href="{% url 'register'%}">register</a></li>
+                        <li><a href="{% url 'login'%}">log in</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!--/nav.collapse-->
+            </div>
+        </nav>
+        {% block header %}
+        {% endblock %}
+
+            <div class="container">
+                <div class="page-header"></div>
+                <div>{% block content %}{% endblock content %}</div>
+            </div>
+
+        <footer>
+            <div class="parent">
+                <div class="container">
+                    <div class="child">
+                        <h5><strong>Адрес</strong></h5>
+                        <ul>
+                            <li>г. Санкт-Петербург ул. Седова, д. 11а офис 627</li>
+                            <li>Почтовый индекс</li>
+                            <li>192019</li>
+                        </ul>
+                    </div>
+                    <div class="child">
+                        <h5><strong>Контакты</strong></h5>
+                        <ul>
+                          <li>Тел. <a class="text-muted" href="tel:+78005050015">8 (800) 505-00-15</a></li>
+                          <li>Email. <a class="text-muted" href="email:email:support@samokat.ru">email:support@samokat.ru</a></li>
+                          <li>VK. <a class="text-muted" href="https://vk.com/samokat_15min">https://vk.com/samokat_15min</a></li>
+                        </ul>
+                    </div>
+                    <div class="child">
+                        <h5><strong>Сайт</strong></h5>
+                        <ul>
+                          <li><a class="text-muted" href="{% url 'about'%}">О компании</a></li>
+                          <li><a class="text-muted" href="{% url 'partner'%}">Сотрудничество</a></li>
+                          <li><a class="text-muted" href="{% url 'connect'%}">Связаться</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

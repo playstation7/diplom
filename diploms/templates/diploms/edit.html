@@ -1,0 +1,16 @@
+{% extends 'diploms/base.html' %}
+{% load bootstrap3 %}
+{% block header %}
+<div class="jumbotron">
+  <h4>Редактирование комментария</h4>
+</div>
+{% endblock %}
+{% block content %}
+  <form method="post" action="{% url 'edit' comment.id%}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+          <button name='submit' class="btn btn-primary">Сохранить</button>
+     {% endbuttons %}
+  </form>
+{% endblock %}

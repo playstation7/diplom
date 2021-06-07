@@ -1,0 +1,72 @@
+{% extends 'diploms/base.html' %}
+{% block header%}
+{% load static %}
+{% load bootstrap3 %}
+
+<div class="image">
+    <h2  class="title" align="center"><span class="title-span">О компании</span></h2>
+    <img  src="{% static 'diploms/img/meeting.jpg' %}"  align="top" width="100%" height="auto"  alt="title">
+</div>
+{%endblock%}
+{% block content %}
+<h1>Наша компания</h1>
+<table>
+    <tr>
+        <th><h4 align="left">Сервис доставки “Самокат” появился на свет в 2018 году.<br> Сначала он работал только в Санкт-Петербурге, однако<br> позднее были открыты филиалы в Москве, Казани и Нижнем Новгороде.</h4></th>
+        <th><img  src="{% static 'diploms/img/samokat.jpg' %}"  align="top" width="100%" height="auto"  alt="samokat"></th>
+    </tr>
+    <tr>
+        <th><img  src="{% static 'diploms/img/ceo.jpg' %}"  align="top" width="100%" height="auto"  alt="ceo"></th>
+        <th><h4 align="left">Учредителями Самоката выступили Вячеслав Бочаров и Родион Шишков. В качестве инвесторов были привлечены такие крупные корпорации, как Сбербанк и Mail.ru Group.
+             По состоянию на декабрь 2020 года в рассматриваемой службе работает порядка 8 тысяч курьеров. При этом постоянно проводится набор новых сотрудников и открытие склаов.</h4></th>
+    </tr>
+    <tr>
+        <th><h4 align="left">Главная особенность компании в том,<br> что они доставляют продукты и другие товары в течение 15 минут.<br> Добиться этого создатели смогли, арендовав склады с продуктами<br> в каждом районе, где принимаются заказы.</h4></th>
+        <th><img  src="{% static 'diploms/img/del.jpg' %}"  align="top" width="100%" height="auto"  alt="ceo"></th>
+    </tr>
+</table>
+<div class="jumbotron">
+    <h2>Отзывы о работе компании</h2>
+</div>
+<h4>Просим вас оставить свой отзыв о работе компании.</h4>
+{% if user.is_authenticated %}
+<form action="{% url 'about' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form%}
+    {% buttons %}
+        <button name='submit' class="btn btn-success">Оставить отзыв</button>
+    {% endbuttons %}
+</form>
+{% else %}
+    <h4>
+        <strong>Комментарии могут оставлять только авторизированные пользователи.</strong>
+    </h4>
+{% endif %}
+{% if messages %}
+{% for result in messages %}
+<h4 style="color:green">{{result}}</h4>
+{% endfor %}
+{% endif %}
+{% for comment in comments %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            {{comment.owner}}
+            <small>
+                {{ comment.date_added|date:'d.m.y H:i' }}
+                {%if comment.is_editing %}
+                    <a href="{% url 'edit' comment.id %}">Редиктировать</a>/<a href="{% url 'delete' comment.id%}">Удалить</a>
+                {% endif %}
+            </small>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <h3>{{ comment.title }}</h3>
+            <hr>
+        <h4>{{ comment.text|linebreaks }}</h4>
+    </div>
+</div>
+{% empty %}
+<h3>Ни одного отзыва еще не оставлено.Будьте первым!</h3>
+{% endfor %}
+{% endblock %}

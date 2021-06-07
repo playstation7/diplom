@@ -1,0 +1,24 @@
+{% extends 'diploms/base.html' %}
+{% block header %}
+<div class="jumbotron" align="center">
+        <h2>Ваши обращения в техническую поддержку</h2>
+</div>
+{% endblock %}
+{% block content %}
+{% for message in messages %}
+<div class="panel panel-default">
+        <div class="panel-body">
+                <p>{{ message.title }} , {{message.date_added|date:'d.m.y H:i'}}</p>
+                <p>Ваше сообщение:{{ message.text|linebreaks }}</p>
+        </div>
+        <div class="panel-footer">
+                <p>Ответ поддержки:{{ message.answer|linebreaks }}</p>
+        </div>
+</div>
+
+
+
+{% empty %}
+<p>Обращений не найдено!</p>
+{% endfor %}
+{% endblock %}

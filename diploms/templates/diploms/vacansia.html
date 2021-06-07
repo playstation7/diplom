@@ -1,0 +1,70 @@
+{% extends 'diploms/base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block header %}
+<ol class="breadcrumb">
+  <li><a href="{% url 'partner'%}">Соотрудничество</a></li>
+  <li><a href="{% url 'vacansies'%}">Все вакансии</a></li>
+  <li><a href="{% url 'vacansia' vacansia.id%}">{{vacansia.name}}</a></li>
+</ol>
+
+
+<div align="center"><h2 class="media-heading">{{vacansia.name}}</h2></div>
+
+
+{% endblock %}
+{% block content %}
+<div class="media">
+  <div class="media-left   media-middle">
+      <img class="media-object" src="{{ vacansia.image.url }}" alt="vacansia" width="200" height="200" style="border: 5px solid #555;}">
+  </div>
+  <div class="media-body" style="width:75%">
+
+
+    <p><strong>Описание должности:</strong><h4>{{vacansia.description}}</h4> </p>
+      <p><strong>Адрес: </strong> <h4>{{vacansia.city}},{{vacansia.address}}</h4></p>
+    <p><strong>Заработная плата:</strong><h3>{{vacansia.salary}} руб.</h3> </p>
+
+  </div>
+</div>
+<hr>
+
+<div align="center"><h2>Запишитесь на собеседование</h2></div>
+<form method="POST" action="{% url 'vacansia' vacansia.id %}" class="form">
+    {%csrf_token%}
+    <div class="input-group">
+        <h3>Заполните следующие поля</h3>
+        <h4 style="line-height:1.5;">1)Имя</h4>
+        <input class="form-control" type="text" placeholder="Имя"  name="first_name" required autocomplete="on" aria-describedby="basic-addon1">
+        <h4 style="line-height:1.5;">2)Фамилия</h4>
+        <input class="form-control" type="text" placeholder="Фамилия"  name="middle_name" required autocomplete="on" aria-describedby="basic-addon2">
+        <h4 style="line-height:1.5;">3)Отчество</h4>
+        <input class="form-control" type="text" placeholder="Отчество"  name="last_name" required autocomplete="on">
+        <h4 style="line-height:1.5;">4)Номер телефона</h4>
+        <input class="form-control" type="tel" placeholder="89999999999" pattern="[0-9]{11}" maxlength="11" name="telephone" required autocomplete="on">
+        <h4 style="line-height:1.5;">5)Выберите желаемую дату собеседования</h4>
+         <input class="form-control" type="date" min="{{ today }}" max="{{max_date}}" name="date" required autocomplete="off">
+        <h4 style="line-height:1.5;">6)Выберите желаемое время собеседования.Учтите,что некоторые часы могут быть уже заняты.</h4>
+        <input class="form-control" list="av_time" placeholder="chose time" type="text" name="time" required autocomplete="off" >
+    </div>
+    <datalist id="av_time">
+        {% if available_times %}
+        {% for i in available_times %}
+            <option value="{{i}}">
+        {% endfor %}
+        {% endif %}
+    </datalist>
+    <br>
+    <div align="center" >
+        <input type="submit"  class="btn btn-primary" value="Записаться на собеседование">
+    </div>
+    <br>
+
+    {% if messages %}
+    {% for result in messages %}
+    <div class="alert alert-warning" role="alert"><h3>{{ result }}</h3></div>
+
+    {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}

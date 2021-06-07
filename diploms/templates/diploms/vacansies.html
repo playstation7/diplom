@@ -1,0 +1,48 @@
+{% extends 'diploms/base.html'%}
+{% load bootstrap3 %}
+{% block header %}
+<div class="jumbotron" align="center">
+    <h2>Доступные вакансии</h2>
+</div>
+{% endblock %}
+{% block content %}
+<div class="panel panel-default" >
+    <div class="panel-body">
+        <form action="{% url 'vacansies'%}" method="post" >
+            {% csrf_token %}
+            <label for="city" >Город</label>
+            <input  type="text"  list="cities" name="city"  autocomplete="off" placeholder="Не выбрано">
+
+            <datalist id="cities">
+                <option value="Любой">
+                {% for city in cities %}
+                    <option value="{{city}}">
+                {% endfor %}
+            </datalist>
+            <button class="btn btn-success">Применить</button>
+        </form>
+    </div>
+</div>
+{% for vac in vacs %}
+<div class="panel panel-success" style="width:80%">
+    <div class="panel-heading"><h4><a href="{% url 'vacansia' vac.id %}">{{vac.name}} , {{vac.city}}</a></h4></div>
+    <div class="panel-body">
+        <p><strong>Описание:</strong> {{vac.description|slice:"200"}}...</p>
+
+    </div>
+    <div class="panel-body">
+        <p><strong>Заработная плата:</strong> {{vac.salary}} руб.</p>
+
+    </div>
+    <div class="panel-body">
+
+        <p><strong>Адресс: </strong>{{vac.address}}</p>
+    </div>
+</div>
+
+
+
+{% empty %}
+<h4>Нет доступных вакансий</h4>
+{% endfor %}
+{% endblock %}

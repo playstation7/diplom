@@ -1,0 +1,16 @@
+{% extends 'diploms/base.html' %}
+{% load bootstrap3 %}
+{% block header %}
+  <h2 align="center">Выполните вход в свой аккаунт</h2>
+{% endblock %}
+{% block content %}
+  <form method="post" action="{% url 'login'%}" class="form">
+    {% csrf_token%}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">Log in</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'index'%}">
+  </form>
+
+{% endblock %}

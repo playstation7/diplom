@@ -1,0 +1,26 @@
+{% extends 'diploms/base.html' %}
+{% load bootstrap3 %}
+{% block header %}
+<div class="jumbotron" align="center">
+  <h2>Есть вопросы?<br>Задайте их нашей службе поддержки.</h2>
+</div>
+{% endblock %}
+{% block content %}
+<h2><a href="{% url 'messages' %}"  > Мои обращения </a></h2>
+<h4 align="left">Если у вас есть какие-то вопросы по работе нашей компании, <br>то вы можете обратиться к нам за помощью.<br> Заполните все
+  необходимые поля и дождитесь ответа от службы поддержки.<br>
+  Статус ваших обращений вы можете посмотреть<a href="{% url 'messages' %}" > здесь. </a></h4>
+{% if messages %}
+{% for result in messages %}
+<h3 style="color:green">{{result}}</h3>
+{% endfor %}
+{% endif %}
+<form action="{% url 'support' %}" method="post">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">Отправить</button>
+  {% endbuttons %}
+</form>
+
+{% endblock %}

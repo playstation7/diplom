@@ -1,0 +1,26 @@
+{% extends 'diploms/base.html' %}
+{% block header %}
+<div class="jumbotron">
+  <h2 align="center">Все новости</h2>
+</div>
+{% endblock %}
+{% block content %}
+{% for new in news %}
+
+<div class="media">
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <h3><a href="{% url 'new' new.id%}">{{new.title}}</a> </h3>
+      <p>Дата публикации: {{new.date_published|date:"d.m.Y"}}</p>
+
+    </div>
+  <div class="panel-footer">
+    {{new.text|slice:500}}h6>
+    <p><h6>Источник:<a href="{{new.origin}}">{{new.origin}}</a></p></h6>
+  </div>
+
+</div>
+{% endfor %}
+{% endblock %}

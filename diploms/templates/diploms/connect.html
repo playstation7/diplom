@@ -1,0 +1,31 @@
+{% extends 'diploms/base.html' %}
+{% block header %}
+{% load static %}
+<div class="image">
+    <h2 class="title" align="center"><span class="title-span">Контакты</span></h2>
+    <img  src="{% static 'diploms/img/connection.jpg' %}"  align="top" width="100%" height="auto"  alt="lorem">
+
+</div>
+{% endblock %}
+
+{% block content %}
+        <h1>Как связаться с сотрудниками нашей компании</h1>
+        <div class="well well-lg"><h3>Горячая линия</h3>
+        <p><strong>Телефон горячей линии:</strong><a href="tel: +78005050015"> 8 (800) 505-00-15</a> </p></div>
+
+
+        <div class="well well-lg"><h3>Электронные почты</h3>
+        <p><strong>Для любых обращений:</strong><a href="email:support@samokat.ru"> support@samokat.ru</a> </p>
+        <p><strong>Для рекламных предложений:</strong><a href="email:pr@samokat.ru"> pr@samokat.ru</a></p>
+        <p><strong>Для потенциальных поставщиков:</strong><a href="email:zakupki@samokat.ru"> zakupki@samokat.ru</a></p>
+        <p><strong>Для собственников помещений, сдающихся в аренду:</strong><a href="email:arenda@samokat.ru"> arenda@samokat.ru</a></p></div>
+
+        <div class="well well-lg"><h3>Социальные сети</h3>
+        <p><strong>Инстаграм:</strong><a href="https://www.instagram.com/samokat_15min/"> https://www.instagram.com/samokat_15min/</a></p>
+        <p><strong>Фейсбук:</strong><a href="https://www.facebook.com/samokat.ru/"> https://www.facebook.com/samokat.ru/</a></p>
+        <p><strong>Ютуб:</strong><a href="https://www.youtube.com/channel/UCM7ZxT51jX1LfdjMJYqgI7w"> https://www.youtube.com/channel/UCM7ZxT51jX1LfdjMJYqgI7w</a></p>
+        <p><strong>ТикТок:</strong><a href="https://www.tiktok.com/@samokat_15min"> https://www.tiktok.com/@samokat_15min</a></p>
+        <p><strong>ВКонтакте:</strong><a href="https://vk.com/samokat_15min"> https://vk.com/samokat_15min</a></p>
+        <p><strong>Одноклассники:</strong><a href="https://ok.ru/group/57902269595836"> https://ok.ru/group/57902269595836</a></p></div>
+
+{% endblock %}

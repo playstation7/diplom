@@ -1,0 +1,20 @@
+{% extends 'diploms/base.html' %}
+{% load bootstrap3 %}
+{% block header %}
+    <h2 align="center">Регистрация аккаунта</h2>
+{% endblock %}
+{% block content %}
+{% if messages %}
+    {% for result in messages%}
+        <h4 style="color:red">{{ result }}</h4>
+    {% endfor %}
+{% endif %}
+<form method="post" action="{% url 'register' %}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+    {% endbuttons %}
+</form>
+
+{% endblock %}
