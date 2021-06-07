@@ -143,9 +143,9 @@ BOOTSTRAP3 = {
 }
 
 
-"""DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(default='postgres://localhost')
-}"""
+}
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
