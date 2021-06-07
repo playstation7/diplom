@@ -142,6 +142,11 @@ BOOTSTRAP3 = {
     'include_jquery': True,
 }
 
+
+
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+}
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
