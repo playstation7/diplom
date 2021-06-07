@@ -49,7 +49,7 @@
 
                         {% if user.is_authenticated%}
                         <li><div class="dropdown">
-                              <button class="dropbtn">Hello, {{user.username}}</button>
+                              <button class="dropbtn">Привет, {{user.username}}</button>
                               <div class="dropdown-content">
                                 <a href="{% url 'support'%}">Поддержка</a>
                                 <a href="{% url 'logout'%}">Выход</a>
