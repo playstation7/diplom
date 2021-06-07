@@ -140,8 +140,8 @@ def vacansia(request, vacansia_id):
 
 
 def news(request):
-    news = News.objects.all()#order_by("date_published")
-    context = {'news': news}
+    newsSet = None #News.objects.order_by("date_published")
+    context = {'news': newsSet}
     return render(request, 'diploms/news.html', context)
 
 
