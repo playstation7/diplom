@@ -126,7 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
@@ -141,22 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
-# Настройки Heroku
 
-
-
-DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
-}
-
-# Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-
-# Конфигурация статических ресурсов
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 django_heroku.settings(locals())
