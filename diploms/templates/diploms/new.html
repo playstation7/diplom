@@ -5,7 +5,8 @@
   <div align="left">
     <a href="{% url 'news'%}"><<Назад</a>
     <h1>{{new.title}}</h1>
-    <img src="{{ new.image.url }}" alt="image" width="400" height="auto">
+    <img src="{{ new.image_url }}" alt="image" width="400" height="auto">
+    <h6>Фото: {{new.image_origin_str}}</h6>
     <br><br>
     <p>Дата публикации: {{new.date_published|date:"d.m.Y"}}</p>
   </div>

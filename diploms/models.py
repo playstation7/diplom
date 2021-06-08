@@ -40,6 +40,8 @@ class Vacansia(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     address = models.TextField()
     image = models.ImageField(upload_to="media/", null=True, blank=True)
+    image_url = models.CharField(max_length=500, default=' ')
+    image_origin_str = models.CharField(max_length=100, default=' ')
     is_active = models.BooleanField(default=True)
 
     class Meta:
