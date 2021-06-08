@@ -38,7 +38,8 @@
 {% for new in news %}
     <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="{{ new.image.url }}" alt="Новости компании">
+          <img src="{{ new.image_url }}" alt="Новости компании">
+            <h6>Фото: {{new.image_origin_str}}</h6>
           <div class="caption">
             <h3>{{new.title}}</h3>
             <p>{{new.text|slice:200}}...</p>

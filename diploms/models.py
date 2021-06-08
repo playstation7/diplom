@@ -95,6 +95,8 @@ class News(models.Model):
     text = models.TextField()
     date_published = models.DateField(auto_now_add=True)
     image = models.ImageField(null=False, blank=False, upload_to='media/')
+    image_url = models.CharField(max_length=500, default='')
+    image_origin_str = models.CharField(max_length=100, default='')
     origin = models.CharField(max_length=500, null=False, blank=False)
 
     class Meta:
