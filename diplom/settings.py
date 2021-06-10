@@ -134,9 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 if os.getcwd() == '/app':
-    #BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
     }
