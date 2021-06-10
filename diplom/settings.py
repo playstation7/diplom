@@ -135,13 +135,13 @@ BOOTSTRAP3 = {
     'include_jquery': True,
 }
 
-if os.getcwd() == '/app':
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
-    STATIC_ROOT = 'staticfiles'
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://localhost')
+}
+STATIC_ROOT = 'staticfiles'
 
 
 
