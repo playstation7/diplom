@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-eapmry^qk%(ny8lx)iu!21sf(^ocb1l+4_8brko@^jgyn-lin8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['learning-log.herokuapp.com']
 
@@ -119,10 +119,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -134,13 +134,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 if os.getcwd() == '/app':
+    #BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
     }
+    STATIC_ROOT = 'staticfiles'
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
+
 django_heroku.settings(locals())

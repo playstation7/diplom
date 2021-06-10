@@ -39,7 +39,7 @@ class Vacansia(models.Model):
     salary = models.IntegerField()
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     address = models.TextField()
-    image = models.ImageField(upload_to="media/", null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     image_url = models.CharField(max_length=500, default=' ')
     image_origin_str = models.CharField(max_length=100, default=' ')
     is_active = models.BooleanField(default=True)
@@ -55,7 +55,7 @@ class Message(models.Model):
     """Класс обращений"""
     title = models.ForeignKey(Topic, on_delete=models.CASCADE, default='Я ПОКУПАТЕЛЬ')
     text = models.TextField()
-    file = models.FileField(null=True, blank=True,upload_to='diplom/media_cdn')
+    file = models.FileField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     answer = models.TextField(null=True, blank=True, default=' ')
@@ -64,6 +64,9 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'message'
         verbose_name_plural = 'messages'
+
+
+
 
     def __str__(self):
         if self.is_active:

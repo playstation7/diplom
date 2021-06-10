@@ -155,11 +155,11 @@ def support(request):
     if request.method != 'POST':
         form = MessageForm()
     else:
-        form = MessageForm(data=request.POST)
+        form = MessageForm(request.POST,request.FILES)
         if form.is_valid():
             new_mes = form.save(commit=False)
             new_mes.owner = request.user
-            new_mes.file = request.POST.get('file')
+
             new_mes.save()
             mes.success(request,'Ваше обращение успешно отправлено')
             return redirect('support')

@@ -5,8 +5,8 @@ from diploms.models import Message, Comment, Interview  # Vacansia
 class MessageForm(ModelForm):
     class Meta:
         model = Message
-        fields = ['title', 'text']
-        labels = {'title': 'Заголовок', 'text': 'Текст'}
+        fields = ['title', 'text','file']
+        labels = {'title': 'Заголовок', 'text': 'Текст', 'file': 'Загрузите файл при необходимости'}
         widgets = {
             'text': Textarea(attrs={
 
