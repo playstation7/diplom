@@ -159,6 +159,7 @@ def support(request):
         if form.is_valid():
             new_mes = form.save(commit=False)
             new_mes.owner = request.user
+            new_mes.file = request.POST.get('file')
             new_mes.save()
             mes.success(request,'Ваше обращение успешно отправлено')
             return redirect('support')

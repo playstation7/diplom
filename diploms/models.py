@@ -55,7 +55,7 @@ class Message(models.Model):
     """Класс обращений"""
     title = models.ForeignKey(Topic, on_delete=models.CASCADE, default='Я ПОКУПАТЕЛЬ')
     text = models.TextField()
-    file = models.FileField(null=True, blank=True)
+    file = models.FileField(null=True, blank=True,upload_to='diplom/media_cdn')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
     answer = models.TextField(null=True, blank=True, default=' ')

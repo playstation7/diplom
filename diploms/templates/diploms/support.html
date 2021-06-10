@@ -17,7 +17,10 @@
 {% endif %}
 <form action="{% url 'support' %}" method="post">
   {% csrf_token %}
-  {% bootstrap_form form %}
+  {% bootstrap_form form%}
+  <h5>Загрузите файл при необходимости</h5>
+  <input type="file" name="file">
+  <br>
   {% buttons %}
   <button type="submit" class="btn btn-primary">Отправить</button>
   {% endbuttons %}
